@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter_kit/screens/login/login_page.dart';
 import 'core/app_theme.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Your App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const Scaffold(body: Center(child: Text("Hello, World!"))),
+      home: LoginPage(), // Replace with your login page widget
     );
   }
 }
