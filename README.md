@@ -15,7 +15,7 @@ A clean and scalable Flutter starter template designed to kickstart your next ap
 - Firebase integration (with setup instructions)
 - GetX state management and routing
 - Custom `AuthService` and `FirestoreService`
-- Predefined folder architecture (`controllers/`, `views/`, `services/`, `bindings/`, etc.)
+- Predefined folder architecture (`controllers/`, `screens/`, `widgets/`, `core/`, etc.)
 - Light & dark theme switching
 - Sample login/register screen
 - Easy route handling and dependency injection
