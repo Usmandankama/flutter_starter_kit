@@ -24,7 +24,7 @@ class CustomInput extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           filled: true,
-          fillColor: AppColors.lightGray,
+          fillColor: AppColors.fontLight,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
