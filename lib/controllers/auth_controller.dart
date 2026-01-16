@@ -92,20 +92,37 @@ class AuthController extends GetxController {
 
   Future<UserCredential?> signInWithGoogle() async {
     try {
+      // Start the sign-in process
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) return null; // User canceled sign-in
+      if (googleUser == null) return null; // User canceled the sign-in
 
+      // Get the authentication details
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
 
+      // Create a new credential
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      return await _auth.signInWithCredential(credential);
-    } catch (e) {
-      print("Google Sign-In Error: $e");
+      // Sign in to Firebase with the Google credential
+      final userCredential = await _auth.signInWithCredential(credential);
+
+      // OPTIONAL: If you're using Firestore, save user info to Firestore here
+      // await saveUserToFirestore(userCredential.user);
+
+      // OPTIONAL: Handle local state or navigation after login
+      // Get.offAllNamed('/home');
+
+      return userCredential;
+    } catch (e, stackTrace) {
+      debugPrint("Google Sign-In Error: $e");
+      debugPrint("StackTrace: $stackTrace");
+
+      // You could show a dialog/snackbar here
+      // Get.snackbar("Login Failed", "Unable to sign in with Google");
+
       return null;
     }
   }
